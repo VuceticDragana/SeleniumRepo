@@ -3,6 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class UpdateAddressPage
 {
@@ -13,6 +14,7 @@ public class UpdateAddressPage
   WebElement stateField;
   WebElement zipField;
   WebElement mobPhpneField;
+  WebElement addressTitle;
   
   public UpdateAddressPage(WebDriver driver)
   {
@@ -37,7 +39,7 @@ public class UpdateAddressPage
 
   public WebElement getStateField()
   {
-    return stateField;
+    return driver.findElement(By.id("id_state"));
   }
 
   public WebElement getZipField()
@@ -48,6 +50,11 @@ public class UpdateAddressPage
   public WebElement getMobPhpneField()
   {
     return driver.findElement(By.id("phone_mobile"));
+  }  
+
+  public WebElement getAddressTitle()
+  {
+    return driver.findElement(By.id("alias"));
   }
 
   public void insertAddress(String address)
@@ -59,5 +66,35 @@ public class UpdateAddressPage
   public void saveButtonClick()
   {
     getSaveButton().click();
+  }
+  
+  public void insertCity(String city)
+  {
+    getCityField().clear();
+    getCityField().sendKeys(city);
+  }
+  
+  public void insertState(String st)
+  {
+    Select state = new Select(getStateField());
+    state.selectByVisibleText(st);
+  }
+  
+  public void insertZip(String zip)
+  {
+    getZipField().clear();
+    getZipField().sendKeys(zip);
+  }
+  
+  public void insertMobilePhone(String mp)
+  {
+    getMobPhpneField().clear();
+    getMobPhpneField().sendKeys(mp);
+  }
+  
+  public void insertAddressTitle(String title)
+  {
+    getAddressTitle().clear();
+    getAddressTitle().sendKeys(title);
   }
 }

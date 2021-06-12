@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -11,6 +12,7 @@ public class MyAddressPage
   WebElement addNewAddressButton;
   WebElement deleteButton;
   WebElement textChangeAddressLabel;
+  WebElement textNewAddress;
   
   public MyAddressPage(WebDriver driver)
   {
@@ -30,12 +32,26 @@ public class MyAddressPage
 
   public WebElement getDeleteButton()
   {
-    return driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/div/div/ul/li[9]/a[2]/span"));
+    return driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/div/div[2]/ul/li[9]/a[2]/span"));
   }  
   
   public WebElement getTextChangeAddressLabel()
   {
     return driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/div/div/ul/li[4]/span[1]"));
+  }  
+
+  public WebElement getTextNewAddress()
+  {
+    String putanja = "//*[@id=\"center_column\"]/div[1]/div/div[2]/ul/li[1]/h3";    
+    
+    if(driver.findElements(By.xpath(putanja)).size() > 0)
+    {
+      return driver.findElement(By.xpath(putanja));
+    }
+    else
+    {
+      return null;
+    }    
   }
 
   public void updateButtonClick()
@@ -55,7 +71,21 @@ public class MyAddressPage
   
   public String textChangeAddressLabel()
   {
-    return this.getTextChangeAddressLabel().getText();
+    return getTextChangeAddressLabel().getText();
   }
   
+  public String textNewAddressLabel()
+  {
+    return getTextNewAddress().getText();
+  }
+  
+  public WebElement getEnterButton() {
+    return  driver.findElement(By.xpath("//body"));
+
+}
+
+public void EnterClick() {
+    this.getEnterButton().sendKeys(Keys.ENTER);
+    
+}
 }
