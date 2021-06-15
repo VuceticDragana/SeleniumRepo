@@ -80,8 +80,8 @@ public class AddressTest extends BaseTest
       e1.printStackTrace();
     }    
 
-    WebElement asd = myAddressPage.getTextNewAddress();    
-    assertEquals(asd, null);
+    WebElement actualResult = myAddressPage.getTextNewAddress();    
+    assertEquals(actualResult, null);
   }
 
   @AfterMethod

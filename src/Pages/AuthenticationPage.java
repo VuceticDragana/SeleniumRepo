@@ -13,7 +13,7 @@ public class AuthenticationPage
   WebElement errorInvalidEmail;
   WebElement errorInvalidPassword;
   WebElement errorEmpty;
-    
+
   public AuthenticationPage(WebDriver driver)
   {
     super();
@@ -33,8 +33,8 @@ public class AuthenticationPage
   public WebElement getSignInButton()
   {
     return driver.findElement(By.id("SubmitLogin"));
-  }  
-  
+  }
+
   public WebElement getErrorInvalidEmail()
   {
     return driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]"));
@@ -55,33 +55,33 @@ public class AuthenticationPage
     getEmailField().clear();
     getEmailField().sendKeys(email);
   }
-  
+
   public void insertPassword(String password)
   {
     getPasswordField().clear();
     getPasswordField().sendKeys(password);
   }
-  
+
   public void signInClick()
   {
     getSignInButton().click();
   }
-  
+
   public String texterrorInvalidEmailLabel()
   {
     return this.getErrorInvalidEmail().getText();
   }
-  
+
   public String texterrorInvalidPasswordLabel()
   {
     return this.getErrorInvalidPassword().getText();
   }
-  
+
   public String texterrorEmptyLabel()
   {
     return this.getErrorEmpty().getText();
   }
-  
+
   public String textSignInLabel()
   {
     return this.getSignInButton().getText();
